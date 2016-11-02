@@ -110,15 +110,15 @@ sai_status_t sai_create_route_entry(
 
     if (!unicast_route_entry) {
         status = SAI_STATUS_INVALID_PARAMETER;
-        SAI_LOG_ERROR("null unicast entry: %s",
-                       sai_status_to_string(status));
+        SAI_LOG_ERROR("null unicast entry: %s, %d",
+                      sai_status_to_string(status), (int)status);
         return status;
     }
 
     if (!attr_list) {
         status = SAI_STATUS_INVALID_PARAMETER;
-        SAI_LOG_ERROR("null attribute list: %s",
-                       sai_status_to_string(status));
+        SAI_LOG_ERROR("null attribute list: %s, %d",
+                      sai_status_to_string(status), (int)status);
         return status;
     }
 
@@ -153,6 +153,8 @@ sai_status_t sai_create_route_entry(
   }
 
   SAI_LOG_EXIT();
+
+  SAI_LOG_ERROR("sai_create_route_entry returns %s, %d", sai_status_to_string(status), (int)status);
 
   return (sai_status_t)status;
 }
